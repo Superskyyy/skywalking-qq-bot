@@ -17,12 +17,12 @@ async def send_meg(bot: Bot, group_id: str, msg: str):
 from pprint import pprint
 @msg_matcher.handle()
 async def _(bot: Bot, event: GroupMessageEvent):
-    logger.debug(f"群事件id: {GroupMessageEvent.message_id}")
-    logger.debug(f"群事件sender: {GroupMessageEvent.sender}")
-    logger.debug(f"群事件reply: {GroupMessageEvent.message_id}")
+    logger.debug(f"群事件id: {event.message_id}")
+    logger.debug(f"群事件sender: {event.sender}")
+    logger.debug(f"群事件reply: {event.message_id}")
 
     print('========================')
-    pprint(vars(GroupMessageEvent))
+    pprint(vars(event))
     print('========================')
 
     if str(event.group_id) in forwarder_source_group:
